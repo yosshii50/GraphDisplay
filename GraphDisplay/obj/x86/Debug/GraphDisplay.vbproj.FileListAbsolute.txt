@@ -1,0 +1,9 @@
+C:\Users\yagi_yo\Documents\GitHub\GraphDisplay\GraphDisplay\bin\Debug\GraphDisplay.exe
+C:\Users\yagi_yo\Documents\GitHub\GraphDisplay\GraphDisplay\bin\Debug\GraphDisplay.pdb
+C:\Users\yagi_yo\Documents\GitHub\GraphDisplay\GraphDisplay\bin\Debug\GraphDisplay.xml
+C:\Users\yagi_yo\Documents\GitHub\GraphDisplay\GraphDisplay\obj\x86\Debug\WindowsApplication2.Form1.resources
+C:\Users\yagi_yo\Documents\GitHub\GraphDisplay\GraphDisplay\obj\x86\Debug\WindowsApplication2.Resources.resources
+C:\Users\yagi_yo\Documents\GitHub\GraphDisplay\GraphDisplay\obj\x86\Debug\GraphDisplay.vbproj.GenerateResource.Cache
+C:\Users\yagi_yo\Documents\GitHub\GraphDisplay\GraphDisplay\obj\x86\Debug\GraphDisplay.exe
+C:\Users\yagi_yo\Documents\GitHub\GraphDisplay\GraphDisplay\obj\x86\Debug\GraphDisplay.xml
+C:\Users\yagi_yo\Documents\GitHub\GraphDisplay\GraphDisplay\obj\x86\Debug\GraphDisplay.pdb
