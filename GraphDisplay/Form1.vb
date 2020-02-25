@@ -1,107 +1,48 @@
-﻿Public Class Form1
+﻿Option Explicit On '型宣言を強制
+Option Strict On 'タイプ変換を厳密に
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+Public Class Form1
 
-        Static PubBITMAP As Bitmap
-        If PubBITMAP Is Nothing Then
-            PubBITMAP = New Bitmap(PictureBox1.Width, PictureBox1.Height)
-        End If
-
-        Call DrawGp(PubBITMAP)
-
-        PictureBox1.Image = PubBITMAP
-
+    '一次関数
+    Private Sub LinearBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LinearBtn.Click
+        Call GraphPicture1.DrawGraph(AddressOf GrapthFunctionLinear)
     End Sub
+    Private Function GrapthFunctionLinear(ByVal NowPosX As Double) As Double
 
-    Private Sub DrawGp(ByVal GetBITMAP As System.Drawing.Bitmap)
+        Dim NowPosY As Double
 
-        Dim ds As DrawSet = DrawInit(GetBITMAP)
+        'ここが一次関数
+        NowPosY = CDbl(TextBox2.Text) * NowPosX + CDbl(TextBox1.Text)
 
-        For EleX As Integer = GetBITMAP.Width * -1 To GetBITMAP.Width
-
-            Dim NowPosX As Integer
-            Dim NowPosY As Integer
-
-            NowPosX = EleX
-
-            'ここが一次関数
-            NowPosY = NowPosX * 10 + 100
-
-            DrawXY(ds, NowPosX, NowPosY)
-        Next
-
-        'リソースを解放する
-        ds.g.Dispose()
-
-    End Sub
-
-    Structure DrawSet
-        Dim g As System.Drawing.Graphics
-        Dim XMax As Integer
-        Dim YMax As Integer
-        Dim XPos As Integer
-        Dim YPos As Integer
-        Dim LastPosX As Integer
-        Dim LastPosY As Integer
-    End Structure
-    Private Function DrawInit(ByVal GetBITMAP As System.Drawing.Bitmap) As DrawSet
-
-        Dim ds As DrawSet
-
-        ds.g = System.Drawing.Graphics.FromImage(GetBITMAP)
-
-        ds.XMax = GetBITMAP.Width
-        ds.YMax = GetBITMAP.Height
-        ds.XPos = GetBITMAP.Width / 2
-        ds.YPos = GetBITMAP.Height / 2
-        ds.LastPosX = -1
-        ds.LastPosY = -1
-
-        ds.g.FillRectangle(Brushes.White, New Rectangle(0, 0, ds.XMax, ds.YMax))
-
-        For WrkStep As Integer = 0 To ds.YPos Step 20
-
-            Dim WrkPens As System.Drawing.Pen
-            If WrkStep = 0 Then
-                WrkPens = Pens.SeaGreen
-            Else
-                WrkPens = Pens.SkyBlue
-            End If
-
-            ds.g.DrawLine(WrkPens, 0, ds.YPos + WrkStep, ds.XMax, ds.YPos + WrkStep)
-            ds.g.DrawLine(WrkPens, 0, ds.YPos + WrkStep * -1, ds.XMax, ds.YPos + WrkStep * -1)
-        Next
-        For WrkStep As Integer = 0 To ds.XPos Step 20
-
-            Dim WrkPens As System.Drawing.Pen
-            If WrkStep = 0 Then
-                WrkPens = Pens.SeaGreen
-            Else
-                WrkPens = Pens.SkyBlue
-            End If
-
-            ds.g.DrawLine(WrkPens, ds.XPos + WrkStep, 0, ds.XPos + WrkStep, ds.YMax)
-            ds.g.DrawLine(WrkPens, ds.XPos + WrkStep * -1, 0, ds.XPos + WrkStep * -1, ds.YMax)
-
-        Next
-
-        Return ds
+        Return NowPosY
     End Function
-    Private Sub DrawXY(ByRef ds As DrawSet, ByVal X As Integer, ByVal Y As Integer)
 
-        Y = Y * -1
-
-        If ds.LastPosX = -1 Then
-            ds.LastPosX = X
-            ds.LastPosY = Y
-        End If
-
-        'ds.g.DrawRectangle(Pens.Black, ds.XPos + X, ds.YPos + Y, 1, 1)
-        ds.g.DrawLine(Pens.Black, ds.XPos + ds.LastPosX, ds.YPos + ds.LastPosY, ds.XPos + X, ds.YPos + Y)
-
-        ds.LastPosX = X
-        ds.LastPosY = Y
-
+    '２次関数
+    Private Sub QuadraticBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuadraticBtn.Click
+        Call GraphPicture1.DrawGraph(AddressOf GrapthFunctionQuadratic)
     End Sub
+    Private Function GrapthFunctionQuadratic(ByVal NowPosX As Double) As Double
+
+        Dim NowPosY As Double
+
+        'ここが2次関数
+        NowPosY = CDbl(TextBox3.Text) * NowPosX ^ 2 + CDbl(TextBox7.Text) * NowPosX + CDbl(TextBox5.Text)
+
+        Return NowPosY
+    End Function
+
+    '３次関数
+    Private Sub CubicBtn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CubicBtn.Click
+        Call GraphPicture1.DrawGraph(AddressOf GrapthFunctionCubic)
+    End Sub
+    Private Function GrapthFunctionCubic(ByVal NowPosX As Double) As Double
+
+        Dim NowPosY As Double
+
+        'ここが３次関数
+        NowPosY = CDbl(TextBox4.Text) * NowPosX ^ 3 + CDbl(TextBox8.Text) * NowPosX ^ 2 + CDbl(TextBox9.Text) * NowPosX + CDbl(TextBox6.Text)
+
+        Return NowPosY
+    End Function
 
 End Class
